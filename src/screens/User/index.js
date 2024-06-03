@@ -1,0 +1,8 @@
+export {Home} from './Home'
+export {Setting} from './Setting'
+export {Show as ClassroomShow} from './classrooms/Show'
+export {Show as AnnouncementShow} from './classrooms/announcement/Show'
+export {Index as AttendanceList} from './classrooms/attendance/Index' 
+export {Scanner as AttendanceScanner} from './classrooms/attendance/Scanner'
+export {Index as TaskList} from './classrooms/task/Index'
+export {Show as TaskShow} from './classrooms/task/Show'
