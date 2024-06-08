@@ -24,3 +24,17 @@ export const getTask = async (id) => {
   
     return data;
   };
+
+
+  export const submitTask = async (id) => {
+    const token = await getToken();
+  
+    const { data } = await axios.get(`/classrooms/task/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type" : 'multipart/form-data',
+      },
+    });
+  
+    return data;
+  };

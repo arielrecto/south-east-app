@@ -80,7 +80,7 @@ export const Show = () => {
               {classroomData?.announcements_count}
             </Text>
           </View>
-          <View
+          <TouchableOpacity onPress={() => navigation.navigate(ROUTES.Classroom.task.list)}
             className="shadow-lg shadow-black h-32 bg-white 
           grow ml-2 rounded-lg p-2 flex-col justify-between"
           >
@@ -88,10 +88,10 @@ export const Show = () => {
               <IonIcon name="reader-outline" size={20} />
               <Text className="text-[15px] ml-5">Task</Text>
             </View>
-            <Text className="text-center text-4xl font-bold">
+            <Text className="text-center text-4xl font-bold text-blue-500">
               {classroomData?.tasks_count}
             </Text>
-          </View>
+          </TouchableOpacity>
         </View>
 
         <View className="flex-col p-2">
@@ -119,7 +119,7 @@ export const Show = () => {
             </>
           ) : (
             <View className="h-34 w-full rounded-lg flex justify-center items-center">
-              No Announcements
+             <Text>No Announcements</Text> 
             </View>
           )}
         </View>

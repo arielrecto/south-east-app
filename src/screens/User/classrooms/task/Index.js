@@ -47,6 +47,8 @@ export const Index = ({navigation}) => {
           </View>
         ) : (
           <>
+            {tasks.length !== 0 ? (<>
+              <>
             {tasks.map((task) => (
               <TouchableOpacity onPress={() => navigation.navigate(ROUTES.Classroom.task.show, {taskId : task.id})}  key={task.id}>
                 <View
@@ -80,6 +82,12 @@ export const Index = ({navigation}) => {
                 </View>
               </TouchableOpacity>
             ))}
+          </>
+            </>) : (<>
+            <View className="flex-1 justify-center items-center">
+                  <Text>No Task </Text>
+            </View>
+            </>)}
           </>
         )}
       </View>

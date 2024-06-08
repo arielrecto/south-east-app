@@ -1,6 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { ROUTES } from "../utils/constant";
-import { Home, AttendanceScanner, AnnouncementShow, TaskShow} from "../screens/User";
+import { Home, AttendanceScanner, AnnouncementShow, TaskShow, TaskSubmit} from "../screens/User";
 import {ClassroomDrawerNavigation} from './ClassroomDrawerNavigation '
 
 export const HomeStackNavigation = () => {
@@ -25,8 +25,10 @@ export const HomeStackNavigation = () => {
           title : "Task"
         }} component={TaskShow} />
         
-        {/* <Stack.Screen name="Notifications" component={Notifications} />
-        <Stack.Screen name="Profile" component={Profile} />
+         <Stack.Screen options={{
+          title : ""
+        }} name={ROUTES.Classroom.task.submit} component={TaskSubmit} />
+       {/* <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Settings" component={Settings} /> */}
       </Stack.Navigator>
     </>

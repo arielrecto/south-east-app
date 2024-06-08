@@ -16,7 +16,8 @@ export const routes  = {
         },
         task : {
             list : "classroom-task-list",
-            show : 'classroom-task-show'
+            show : 'classroom-task-show',
+            submit : "classroom-task-submit"
         }
     }
 }
