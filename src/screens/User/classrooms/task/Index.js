@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 import { getToken } from "../../../../utils/tokenService";
 import { getTasks } from "../../../../controllers/TaskController";
-import { useRoute } from "@react-navigation/native";
+import { useFocusEffect, useRoute } from "@react-navigation/native";
 import { Loader } from "../../../../components";
 import { timeStamp } from "../../../../utils/dateFormat";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -30,9 +30,11 @@ export const Index = ({navigation}) => {
     }
   };
 
-  useEffect(() => {
+
+  useFocusEffect(useCallback(() => {
     getData();
-  }, []);
+  }, []))
+
 
   return (
     <ScrollView className="flex-1 p-2">

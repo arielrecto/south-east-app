@@ -12,3 +12,16 @@ export const addAttendance = async (payload) => {
 
   return data;
 };
+
+
+export const attendanceIndex = async (id) => {
+  const token = await getToken();
+
+  const { data } = await axios.get(`/classrooms/${id}/attendances`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return data;
+}

@@ -7,3 +7,8 @@ export const timeStamp  = (date) => {
 export const Month = (date) => {
     return moment(date).format('MMMM');
 }
+
+export const timeFormat = (time) => {
+
+    return moment(time, "HH:mm").format('LT');
+}

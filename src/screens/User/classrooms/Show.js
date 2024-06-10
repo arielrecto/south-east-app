@@ -67,41 +67,66 @@ export const Show = () => {
             <Text className="text-[8px]">{classroomData?.strand.name}</Text>
           </View>
         </View>
-        <View className="flex-row flex-wrap p-2">
+        <View className="flex-row">
+        <TouchableOpacity
+            onPress={() => navigation.navigate(ROUTES.Classroom.attendance.list)}
+            className="shadow-lg shadow-black h-32 bg-white 
+          w-1/2 ml-2 rounded-lg p-2 flex-col justify-between"
+          >
+            <View className="flex items-center justify-center pt-4">
+              <IonIcon name="qr-code" size={50} />
+              <Text className="text-[15px] ml-5">Attendance</Text>
+            </View>
+            {/* <Text className="text-center text-4xl font-bold text-blue-500">
+              {classroomData?.tasks_count}
+            </Text> */}
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate(ROUTES.Classroom.task.list)}
+            className="shadow-lg shadow-black h-32 bg-white 
+          w-1/2 ml-2 rounded-lg p-2 flex-col justify-between"
+          >
+            <View className="flex items-center justify-center pt-4">
+              <IonIcon name="reader-outline" size={50} />
+              <Text className="text-[15px] ml-5">Task</Text>
+            </View>
+            {/* <Text className="text-center text-4xl font-bold text-blue-500">
+              {classroomData?.tasks_count}
+            </Text> */}
+          </TouchableOpacity>
+        </View>
+        <View className="p-2">
           <View
             className="shadow-lg shadow-black h-32
-           bg-white grow rounded-lg p-2 flex-col justify-between"
+           bg-white w-full rounded-lg p-2 flex-col justify-between"
           >
             <View className="flex flex-row items-center">
               <IonIcon name="megaphone-outline" size={20} />
-              <Text className="text-[15px] ml-5">Announcements</Text>
+              <Text className="text-[15px] ml-5">Announcements / Lesson</Text>
             </View>
             <Text className="text-center text-4xl font-bold">
               {classroomData?.announcements_count}
             </Text>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate(ROUTES.Classroom.task.list)}
-            className="shadow-lg shadow-black h-32 bg-white 
-          grow ml-2 rounded-lg p-2 flex-col justify-between"
-          >
-            <View className="flex flex-row items-center">
-              <IonIcon name="reader-outline" size={20} />
-              <Text className="text-[15px] ml-5">Task</Text>
-            </View>
-            <Text className="text-center text-4xl font-bold text-blue-500">
-              {classroomData?.tasks_count}
-            </Text>
-          </TouchableOpacity>
         </View>
 
         <View className="flex-col p-2">
           {classroomData?.announcements.length !== 0 ? (
             <>
               {classroomData?.announcements.map((announcement) => (
-                <TouchableOpacity onPress={() => navigation.navigate(ROUTES.Classroom.announcement.show, {announcementID : announcement.id}) } key={announcement.id}>
-                  <View className="flex 
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate(ROUTES.Classroom.announcement.show, {
+                      announcementID: announcement.id,
+                    })
+                  }
+                  key={announcement.id}
+                >
+                  <View
+                    className="flex 
                    h-32 w-full mt-2 rounded-lg bg-white shadow-sm
-                    shadow-black p-2 justify-between">
+                    shadow-black p-2 justify-between"
+                  >
                     <View className="flex-row justify-between items-center">
                       <Text className="text-2xl font-bold capitalize">
                         {announcement.title}
@@ -111,7 +136,9 @@ export const Show = () => {
                       </Text>
                     </View>
                     <View className="h-12 w-full bg-gray-200 truncate p-2">
-                        <Text className="text-[5px]">{announcement.description}</Text>
+                      <Text className="text-[5px]">
+                        {announcement.description}
+                      </Text>
                     </View>
                   </View>
                 </TouchableOpacity>
@@ -119,7 +146,7 @@ export const Show = () => {
             </>
           ) : (
             <View className="h-34 w-full rounded-lg flex justify-center items-center">
-             <Text>No Announcements</Text> 
+              <Text>No Announcements</Text>
             </View>
           )}
         </View>

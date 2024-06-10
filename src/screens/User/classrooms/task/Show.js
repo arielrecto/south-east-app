@@ -15,7 +15,7 @@ import { getThumbnails } from "../../../../utils/getThumbnails";
 import { SvgUri } from "react-native-svg";
 import { ROUTES } from "../../../../utils/constant";
 
-export const Show = ({navigation}) => {
+export const Show = ({ navigation }) => {
   //#region state variable
   const route = useRoute();
   const taskID = route.params.taskId;
@@ -64,12 +64,23 @@ export const Show = ({navigation}) => {
             </View>
             <View className="mt-2 flex-row justify-between">
               <View>
-                <Text className="text-blue-500 text-[10px]">Score : {studentTask?.task.max_score}</Text>
+                <Text className="text-blue-500 text-[10px]">
+                  Score : {studentTask?.score || 0} /{" "}
+                  {studentTask?.task.max_score}
+                </Text>
               </View>
+
               <View>
                 <Text className="text-[10px] text-gray-500">Duration: </Text>
                 <Text className="text-[5px] text-gray-500">{`${studentTask?.task.start_date} - ${studentTask?.task.end_date}`}</Text>
               </View>
+            </View>
+
+            <View className="flex-row space-x-2">
+              <Text className="text-[10px] text-gray-500">Status: </Text>
+              <Text className="text-[10px] font-bold capitalize text-gray-500">
+                {studentTask?.status}
+              </Text>
             </View>
             <View className="min-h-[200px] p-2 mt-2">
               <Text className="text-[10px] text-gray-500">Description</Text>
@@ -114,7 +125,14 @@ export const Show = ({navigation}) => {
             )}
 
             <View className="mt-10">
-              <TouchableOpacity onPress={() => navigation.navigate(ROUTES.Classroom.task.submit, {taskID : studentTask.id})} className="flex-row justify-center py-2 px-4 rounded-lg bg-blue-400">
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate(ROUTES.Classroom.task.submit, {
+                    taskID: studentTask.id,
+                  })
+                }
+                className="flex-row justify-center py-2 px-4 rounded-lg bg-blue-400"
+              >
                 <Text className="text-[10px] text-white">Submit Task</Text>
               </TouchableOpacity>
             </View>
